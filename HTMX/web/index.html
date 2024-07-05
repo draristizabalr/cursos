@@ -1,0 +1,98 @@
+<style>
+  body{
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    font-size: 30px;
+  }
+
+  li{
+    margin-bottom: 4px;
+    max-width: 300px;
+    text-wrap: balance;
+  }
+
+  .loader {
+    border: 10px solid;
+    border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25)
+      rgba(0, 0, 0, 0.35) rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: animloader 1s linear infinite;
+  }
+
+  @keyframes animloader {
+    0% {
+      border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25)
+        rgba(0, 0, 0, 0.35) rgba(0, 0, 0, 0.75);
+    }
+    33% {
+      border-color: rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.15)
+        rgba(0, 0, 0, 0.25) rgba(0, 0, 0, 0.35);
+    }
+    66% {
+      border-color: rgba(0, 0, 0, 0.35) rgba(0, 0, 0, 0.75)
+        rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+    }
+    100% {
+      border-color: rgba(0, 0, 0, 0.25) rgba(0, 0, 0, 0.35)
+        rgba(0, 0, 0, 0.75) rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  button{
+    transition: opacity 0.5s;
+  }
+
+  button:disabled{
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+</style>
+
+<script defer src="https://unpkg.com/htmx.org@1.9.11"></script>
+<script defer src="https://unpkg.com/htmx.org@1.9.11/dist/ext/client-side-templates.js"></script>
+<script defer src="https://unpkg.com/mustache@latest"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<body class="bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]" hx-ext="client-side-templates">
+
+  
+<form class="max-w-sm mx-auto pt-10">
+  <div class="mb-5">
+      <label
+        for="large-input"
+        class="block mb-2 text-md font-medium text-gray-900 dark:text-white text-center"
+      >Busca tu película
+      </label>
+      <input type="text" id="large-input" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Pikachu, Charmander, ..."
+      hx-get="https://pokeapi.co/api/v2/pokemon/"
+      hx-params='large-input'
+      hx-trigger="input changed delay:500ms"
+      hx-target="#results"
+      mustache-template="#template-results"
+      >
+  </div>
+</form>
+
+<ul id="results" class="text-slate-300 grid grid-cols-2 gap-2 max-w-2xl mx-auto">
+
+</ul>
+  
+  
+  <template id="template-results">
+    {{ #hits }}
+    <li>
+      <a href="{{ url }}">{{ name }}</a>
+    </li>
+    {{ /hits }}
+
+    <li
+      hx-get="https://hn.algolia.com/api/v1/search?tags=front_page&page=2&hitsPerPage=10"
+      hx-trigger="revealed"
+      hx-swap="outerHTML"
+      mustache-template="template-results"
+    ></li>
+  </template>
+</body>

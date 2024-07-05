@@ -1,0 +1,28 @@
+{% extends 'navigation.html' %}
+
+{% block content %}
+<h1>Tasks</h1>
+
+{% for task in tasks %}
+
+<h2>{{task.title}}</h2>
+{% if task.done == False %}
+
+<p>Tarea pendiente</p>
+
+{% else %}
+
+<p>Tarea realizada</p>
+
+{% endif %}
+<p>{{task.description}}</p>
+<p>{{task.project.id}}</p>
+<button>
+  Delete
+</button>
+<button>
+  ✅ Done
+</button>
+
+{% endfor %}
+{% endblock %}
