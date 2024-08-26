@@ -1,23 +1,12 @@
-from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from fastapi import APIRouter, HTTPException, status
+from db.models.user import User
+from db.client import db_client
 
 router = APIRouter(tags=["users", "mongo"],
-                   prefix="/user_db")
+                   prefix="/user_db",
+                   responses={status.HTTP_404_NOT_FOUND: {"message": "No encontrado"}})
 
-# Entidad user
-class User(BaseModel):
-  id: int
-  name: str
-  surname: str
-  url: str
-  age: int
-
-users_list = [
-    User(id=0, name="Brais", surname="Moure", url="https://moure.dev", age=35),
-    User(id=1, name="Moure", surname="Dev", url="https://mouredev.com", age=35),
-    User(id=2, name="Haakon", surname="Dahlberg", url="https://haakon.com", age=35),
-    User(id=3, name="David", surname="Aristizabal", url="https://david-aristizabal.com", age=32),
-  ]
+users_list = []
 
 @router.get("/users")
 async def users():
@@ -39,10 +28,10 @@ async def user(id: int):
     except:
        return { "error": "No se ha encontrado el usuario"}
 
-@router.post('/', response_model=User, status_code=201)
+@router.post('/', response_model=User, status_code=status.HTTP_201_CREATED)
 async def user(user: User):
     if type(search_user(user.id)) == User:
-      raise HTTPException(status_code=204, detail="El usuario ya existe")
+      raise HTTPException(status_code=status.HTTP_204_NO_CONTENT, detail="El usuario ya existe")
     else:
       users_list.append(user)
       return user
