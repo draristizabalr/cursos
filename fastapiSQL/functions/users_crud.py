@@ -26,13 +26,6 @@ def create_user(db: Session, user: UserCreate):
     return db_user
 
 
-def delete_user(db: Session, user_id: int):
-    user_to_delete = db.query(User).filter(User.id == user_id).first()
-    db.delete(user_to_delete)
+def delete_user(db: Session, user: User):
+    db.delete(user)
     db.commit()
-    db.refresh()
-
-    return {
-        "message": "User deleted",
-        "user": dict(user_to_delete)
-    }
