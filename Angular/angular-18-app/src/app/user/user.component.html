@@ -1,0 +1,22 @@
+<section>
+    @if (isLoggedIn){
+        <p>Bienvenido, {{ username }}</p>
+        <img
+            src="https://github.com/draristizabalr.png"
+            alt="Foto de David"
+            (click)="greet()"
+        >
+    } @else {
+        <p>¡Inicia sesión!</p>
+        <button (click)="isLoggedIn = true">Log In</button>
+    }
+
+    <app-games 
+        (addFavoriteEvent)="getFavorite($event)"
+        username="{{ username }}"
+    />
+    @if (favGame !== '') {
+        <p>El juego favorito de {{ username }} es {{ favGame }}</p>
+    }
+</section>
+
