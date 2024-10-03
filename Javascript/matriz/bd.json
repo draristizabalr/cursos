@@ -1,0 +1,122 @@
+[
+  {
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "ciudad": "Madrid",
+    "edad": 30
+  },
+  {
+    "nombre": "Ana",
+    "apellido": "García",
+    "ciudad": "Barcelona",
+    "edad": 25
+  },
+  {
+    "nombre": "Luis",
+    "apellido": "Martínez",
+    "ciudad": "Valencia",
+    "edad": 28
+  },
+  {
+    "nombre": "María",
+    "apellido": "Rodríguez",
+    "ciudad": "Sevilla",
+    "edad": 32
+  },
+  {
+    "nombre": "Carlos",
+    "apellido": "López",
+    "ciudad": "Bilbao",
+    "edad": 27
+  },
+  {
+    "nombre": "Lucía",
+    "apellido": "Hernández",
+    "ciudad": "Zaragoza",
+    "edad": 24
+  },
+  {
+    "nombre": "David",
+    "apellido": "Sánchez",
+    "ciudad": "Málaga",
+    "edad": 29
+  },
+  {
+    "nombre": "Sofía",
+    "apellido": "Jiménez",
+    "ciudad": "Granada",
+    "edad": 26
+  },
+  {
+    "nombre": "Javier",
+    "apellido": "Ruiz",
+    "ciudad": "Valladolid",
+    "edad": 33
+  },
+  {
+    "nombre": "Elena",
+    "apellido": "Moreno",
+    "ciudad": "Córdoba",
+    "edad": 31
+  },
+  {
+    "nombre": "Raúl",
+    "apellido": "Díaz",
+    "ciudad": "Murcia",
+    "edad": 28
+  },
+  {
+    "nombre": "Marta",
+    "apellido": "Álvarez",
+    "ciudad": "Palma",
+    "edad": 30
+  },
+  {
+    "nombre": "Sergio",
+    "apellido": "Torres",
+    "ciudad": "Alicante",
+    "edad": 35
+  },
+  {
+    "nombre": "Natalia",
+    "apellido": "Castro",
+    "ciudad": "Burgos",
+    "edad": 27
+  },
+  {
+    "nombre": "Alejandro",
+    "apellido": "Ortiz",
+    "ciudad": "León",
+    "edad": 23
+  },
+  {
+    "nombre": "Patricia",
+    "apellido": "Vargas",
+    "ciudad": "Salamanca",
+    "edad": 29
+  },
+  {
+    "nombre": "Fernando",
+    "apellido": "Ramos",
+    "ciudad": "San Sebastián",
+    "edad": 34
+  },
+  {
+    "nombre": "Isabel",
+    "apellido": "Romero",
+    "ciudad": "Oviedo",
+    "edad": 22
+  },
+  {
+    "nombre": "Manuel",
+    "apellido": "Molina",
+    "ciudad": "Logroño",
+    "edad": 31
+  },
+  {
+    "nombre": "Sara",
+    "apellido": "Navarro",
+    "ciudad": "Toledo",
+    "edad": 28
+  }
+]
