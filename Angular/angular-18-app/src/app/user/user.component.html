@@ -2,9 +2,11 @@
     @if (isLoggedIn){
         <p>Bienvenido, {{ username }}</p>
         <img
-            src="https://github.com/draristizabalr.png"
+            ngSrc="https://github.com/draristizabalr.png"
             alt="Foto de David"
             (click)="greet()"
+            height="64"
+            width="64"
         >
     } @else {
         <p>¡Inicia sesión!</p>
