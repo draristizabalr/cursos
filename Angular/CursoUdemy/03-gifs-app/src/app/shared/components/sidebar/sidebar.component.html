@@ -1,12 +1,15 @@
-<div class="bg-dark border-right px-3" id="sidebar">
+<div
+  class="bg-dark border-right px-3"
+  id="sidebar"
+>
   <div class="sticky-top z-3 py-3 bg-dark">
     <h3 class="text-light">GifsApp</h3>
-    <hr class="text-light">
+    <hr class="text-light" />
   </div>
   <div class="list-group list-reset">
     <button
       *ngFor="let tag of tagHistory"
-      class="list-group-item list-group-item-action mb-2"
+      class="list-group-item list-group-item-action"
       (click)="onHandleClick(tag)"
     >
       {{ tag | titlecase }}
