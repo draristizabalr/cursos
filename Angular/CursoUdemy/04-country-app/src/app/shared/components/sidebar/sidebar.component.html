@@ -1,0 +1,14 @@
+<h2>Países</h2>
+<hr>
+
+<ul class="list-group">
+  <li
+    *ngFor="let route of routes"
+    [routerLink]="route.url"
+    routerLinkActive="active"
+    class="list-group-item"
+    style="cursor: pointer;"
+  >
+    {{ route.label }}
+  </li>
+</ul>
