@@ -51,6 +51,11 @@
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
+      "optinos": {
+        "hmr": true,
+        "watch": true,
+        "poll": 1000
+      },
       "configurations": {
         "production": {
           "buildTarget": "bases:build:production"

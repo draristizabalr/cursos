@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { SidenavComponent } from './components/shared/sidenav/sidenav.component';
 
 @Component({
-  imports: [RouterModule],
   selector: 'app-root',
+  imports: [RouterOutlet, SidenavComponent],
   templateUrl: './app.component.html',
-  styles: '',
+  styles: ''
 })
 export class AppComponent {
   title = 'bases';

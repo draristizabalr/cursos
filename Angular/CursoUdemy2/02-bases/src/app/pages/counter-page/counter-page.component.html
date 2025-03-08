@@ -1,0 +1,11 @@
+<h1>Contador:</h1>
+<strong>{{ counter }}</strong>
+
+<h1>Contador signal:</h1>
+<strong>{{ counterSignal() }}</strong>
+
+<div class="button-section">
+  <button class="btn btn-primary" (click)="increment(1)">Incrementar</button>
+  <button class="btn btn-primary" (click)="increment(-1)">Decrementar</button>
+  <button class="btn btn-primary" (click)="resetCounter()">Reset</button>
+</div>
