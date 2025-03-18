@@ -1,8 +1,22 @@
 <div
-  id="menu"
-  class="w-[220px] bg-gray-900 min-h-screen z-10 text-slate-300 fixed left-0 h-screen"
+	id="menu"
+	class="w-[220px] bg-gray-900 min-h-screen z-10 text-slate-300 fixed left-0 h-screen"
 >
-  <app-gifs-side-menu-header></app-gifs-side-menu-header>
+	<app-gifs-side-menu-header></app-gifs-side-menu-header>
 
-  <app-gifs-side-menu-options></app-gifs-side-menu-options>
+	@for (menuOption of menuOptions; track menuOption.route) {
+		<app-gifs-side-menu-options
+			[route]="menuOption.route"
+			[icon]="menuOption.icon"
+			[label]="menuOption.label"
+			[subLabel]="menuOption.subLabel"
+		></app-gifs-side-menu-options>
+	}
+	@for (item of gifService.searchHistoryKeys(); track $index) {
+		<app-gifs-side-menu-options
+			[route]="['/dashboard/history', item]"
+			icon="fa-solid fa-clock-rotate-left"
+			[label]="item |	titlecase"
+		></app-gifs-side-menu-options>
+	}
 </div>
