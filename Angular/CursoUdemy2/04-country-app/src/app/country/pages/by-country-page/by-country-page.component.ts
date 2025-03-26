@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
 import { SearchInputComponent } from '../../components/search-input/search-input.component';
-import { CountryTableComponent } from "../../components/country-table/country-table.component";
+import { CountryTableComponent } from '../../components/country-table/country-table.component';
+import { CountryService } from '../../services/country.service';
+import { firstValueFrom, of } from 'rxjs';
 
 @Component({
   selector: 'app-by-country',
@@ -8,8 +11,15 @@ import { CountryTableComponent } from "../../components/country-table/country-ta
   templateUrl: './by-country-page.component.html',
 })
 export class ByCountryPageComponent {
+  countryService = inject(CountryService);
+  query = signal('');
 
-  onSeach($event: string) {
-    console.log($event);
-  }
+  countryResources = rxResource({
+    request: () => ({ query: this.query() }),
+    loader: ({ request }) => {
+      if (!request.query) return of([]);
+
+      return this.countryService.searchByCountry(request.query);
+    },
+  });
 }

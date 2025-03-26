@@ -1,0 +1,33 @@
+<section
+    class="mockup-window bg-base-200 border border-slate-700 h-full w-full p-4"
+  >
+    <div class="bg-info px-4 py-2 rounded-box shadow-lg mb-2 w-fit">
+      <span class="text-3xl text-slate-700">{{ country().name }}</span>
+    </div>
+    <figure
+      class="diff aspect-16/9"
+      tabindex="0"
+    >
+      <div
+        class="diff-item-1"
+        role="img"
+      >
+        <img
+          [alt]="country().name"
+          [src]="country().flagSvg"
+          class="blur-xs"
+        />
+      </div>
+      <div
+        class="diff-item-2"
+        role="img"
+        tabindex="0"
+      >
+        <img
+          [alt]="country().name"
+          [src]="country().flagSvg"
+        />
+      </div>
+      <div class="diff-resizer"></div>
+    </figure>
+  </section>

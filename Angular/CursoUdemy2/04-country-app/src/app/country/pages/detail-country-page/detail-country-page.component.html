@@ -1,0 +1,11 @@
+@if (countryResources.error()) {
+  <shared-not-found></shared-not-found>
+}
+
+@if (countryResources.isLoading()) {
+  <h1 class="text-3xl">Cargando ...</h1>
+}
+
+@if (countryResources.hasValue()) {
+  <country-information [country]="countryResources.value()"></country-information>
+}
