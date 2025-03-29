@@ -1,1 +1,14 @@
-<country-table [countries]="[]"></country-table>
+<div class="flex gap-4">
+  @for (region of regions; track $index) {
+    <button
+      class="btn"
+      (click)="selectedRegion.set(region)"
+      [class.btn-primary]="selectedRegion() === region"
+      [class.btn-info]="selectedRegion() !== region"
+    >
+      {{ region }}
+    </button>
+  }
+</div>
+
+<country-table [countries]="countriesResource.value() ?? []"></country-table>

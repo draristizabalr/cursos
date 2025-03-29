@@ -8,7 +8,7 @@ export class CountryMapper {
       flag: response.flag,
       flagSvg: response.flags.svg,
       name: response.translations['spa'].common ?? response.name.common,
-      capital: response.capital.join(', '),
+      capital: response.capital?.join(', '),
       population: response.population,
       maps: response.maps.googleMaps,
       timezones: response.timezones,

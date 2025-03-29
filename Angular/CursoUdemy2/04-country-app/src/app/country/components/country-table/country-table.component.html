@@ -52,7 +52,7 @@
         </tr>
       }
 
-      @if (countries().length === 0 && !isLoading()) {
+      @if (countries().length === 0 && !isLoading() && !errorMessage()) {
         <tr>
           <td
             colspan="8"

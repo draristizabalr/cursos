@@ -3,12 +3,14 @@
     #inputSearch
     type="text"
     class="input input-bordered mr-2 w-56"
+    [value]="inputValue()"
     [placeholder]="placeholder()"
     autofocus
-    (keyup.enter)="search(inputSearch.value)"
+    (keyup.enter)="searchValue.emit(inputSearch.value)"
+    (keyup)="inputValue.set(inputSearch.value)"
   />
 
   <button class="btn btn-primary"
-    (click)="search(inputSearch.value)"
+    (click)="searchValue.emit(inputSearch.value)"
   >Buscar</button>
 </section>
