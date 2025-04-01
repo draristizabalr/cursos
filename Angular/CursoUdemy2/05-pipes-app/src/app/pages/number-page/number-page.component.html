@@ -1,0 +1,87 @@
+<section class="mx-5 mb-6">
+  <h1 class="text-2xl font-bold">Pipes Numéricos</h1>
+  <h3 class="text-xl">Pipes numéricos incluidos en Angular</h3>
+</section>
+
+<div class="stats shadow border border-info rounded-md">
+  <div class="stat">
+    <div class="stat-figure text-primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="40"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          fill-rule="evenodd"
+          d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12m8.5-2.5a1.5 1.5 0 1 1 2.56 1.06l-3.828 3.83a2.5 2.5 0 0 0-.732 1.767V17a1 1 0 0 0 1 1h5a1 1 0 1 0 0-2h-3.975a.5.5 0 0 1 .121-.197l3.829-3.828A3.5 3.5 0 1 0 8.5 9.5a1 1 0 1 0 2 0"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+    <div class="stat-title">Number:'1.2-2'</div>
+    <div class="stat-value">{{ totalSells() | number : "1.2-2" }}</div>
+    <div class="stat-desc">{{ totalSells() }}</div>
+  </div>
+  <div class="stat">
+    <div class="stat-figure text-primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="40"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          fill-rule="evenodd"
+          d="M23 12c0-6.075-4.925-11-11-11S1 5.925 1 12s4.925 11 11 11s11-4.925 11-11M10 8a1 1 0 0 0 0 2h1v5a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1zm6.5 0a2.5 2.5 0 0 0-2.5 2.5v3a2.5 2.5 0 0 0 5 0v-3A2.5 2.5 0 0 0 16.5 8m-.5 2.5a.5.5 0 0 1 1 0v3a.5.5 0 0 1-1 0zM8 10a1 1 0 1 0-2 0v1H5a1 1 0 1 0 0 2h1v1a1 1 0 1 0 2 0v-1h1a1 1 0 1 0 0-2H8z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+    <div class="stat-title">(+10000)Number:"1.0-2"</div>
+    <div class="stat-value">{{ totalSells() + 10000 | number : "1.0-2" }}</div>
+    <div class="stat-desc">{{ totalSells() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-figure text-primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="40"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2m3 8h-4v1h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1h-2v-1H9v-2h4v-1h-3a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h1V7h2v1h2z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+    <div class="stat-title">Currency: "COP" : "symbol-narrow" : "1.4-4"</div>
+    <div class="stat-value">
+      {{ totalSells() | currency : "COP" : "symbol-narrow" : "1.4-4" }}
+    </div>
+    <div class="stat-desc">{{ totalSells() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-figure text-primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="40"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2M8.83 7.05c.98 0 1.77.79 1.77 1.78c0 .98-.79 1.77-1.77 1.77c-.99 0-1.78-.79-1.78-1.77c0-.99.79-1.78 1.78-1.78M15.22 17c-.98 0-1.77-.8-1.77-1.78s.79-1.77 1.77-1.77s1.78.79 1.78 1.77S16.2 17 15.22 17m-6.72.03L7 15.53L15.53 7l1.5 1.5z"
+        />
+      </svg>
+    </div>
+    <div class="stat-title">Percent</div>
+    <div class="stat-value">{{ percente() | percent: "1.0-2" }}</div>
+    <div class="stat-desc">{{ percente() }}</div>
+  </div>
+</div>
