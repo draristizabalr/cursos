@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './custom-page.component.html',
 })
-export default class CustomPageComponent { }
+export default class CustomPageComponent {
+
+}
