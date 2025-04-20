@@ -1,0 +1,28 @@
+<div #map></div>
+
+<section id="controls">
+  <h2 class="text-2xl font-bold text-black mb-2">Zoom</h2>
+
+  <small class="text-gray-500 font-normal">{{
+    zoom() | number: "1.2-2"
+  }}</small>
+
+  <input
+    #zoomInput
+    type="range"
+    min="1"
+    max="19"
+    step="0.01"
+    [value]="zoom()"
+    class="range range-primary"
+    (input)="zoomEnds.set(+zoomInput.value)"
+  />
+
+  <h2 class="text-2xl font-bold text-black mb-2">Coordenadas</h2>
+  <section class="grid grid-cols-3 grid-flow-row gap-x-4">
+    <strong class="text-primary">Latitud:</strong>
+    <span class="col-span-2">{{ coordinates().lat | number: '1.4-4'}}</span>
+    <strong class="text-primary">Longitud:</strong>
+    <span class="col-span-2">{{ coordinates().lng | number: '1.4-4'}}</span>
+  </section>
+</section>
