@@ -1,1 +1,19 @@
-<p>gender-page works!</p>,
+<h1 class="text-3xl font-bold font-montserrat capitalize mb-5 text-primary">
+  {{ gender() }}
+</h1>
+
+@if (productsResource.isLoading()) {
+  <div class="w-full h-[calc(100vh-65px)] flex justify-center items-center">
+    <span class="loading loading-ring loading-lg"></span>
+  </div>
+}
+
+<div
+  class="grid grid-cols-1 mt-2 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6"
+>
+  @if (productsResource.hasValue()) {
+    @for (product of productsResource.value().products; track product.id) {
+      <product-card [product]="product"></product-card>
+    }
+  }
+</div>
