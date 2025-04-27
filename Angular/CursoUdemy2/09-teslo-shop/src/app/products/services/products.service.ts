@@ -21,9 +21,18 @@ interface Options {
 export class ProductsService {
   private http = inject(HttpClient);
 
+  private productsCache = new Map<string, ProductsResponse>();
+  private productCache = new Map<string, Product>();
+
   getProducts(options: Options): Observable<ProductsResponse> {
     const url = `${baseUrl}/products`;
     const { limit = 9, offset = 0, gender = '' } = options;
+
+    const key = `${limit}-${offset}-${gender}`;
+
+    if (this.productsCache.has(key)) {
+      return of(this.productsCache.get(key)!);
+    }
 
     return this.http
       .get<ProductsResponse>(`${url}`, {
@@ -33,12 +42,23 @@ export class ProductsService {
           gender,
         },
       })
-      .pipe(tap((response) => console.log(response)));
+      .pipe(
+        tap((response) => console.log(response)),
+        tap((response) => this.productsCache.set(key, response)),
+      );
   }
 
   getProductByIdSlug(idSlug: string): Observable<Product> {
     const url = `${baseUrl}/products/${idSlug}`;
 
-    return this.http.get<Product>(url);
+    if (this.productCache.get(idSlug)) {
+      return of(this.productCache.get(idSlug)!);
+    }
+
+    return this.http.get<Product>(url)
+      .pipe(
+        tap((response) => console.log(response)),
+        tap((response) => this.productCache.set(idSlug, response))
+      );
   }
 }
