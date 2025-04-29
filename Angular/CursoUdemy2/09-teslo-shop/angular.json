@@ -71,7 +71,8 @@
               "buildTarget": "teslo-shop:build:production"
             },
             "development": {
-              "buildTarget": "teslo-shop:build:development"
+              "buildTarget": "teslo-shop:build:development",
+              "hmr": true
             }
           },
           "defaultConfiguration": "development"

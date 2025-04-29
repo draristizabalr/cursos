@@ -22,13 +22,25 @@
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
       >
         <li>
-          <a routerLink="/gender/men" [routerLinkActive]="['bg-slate-300', 'text-slate-700']">Hombres</a>
+          <a
+            routerLink="/gender/men"
+            [routerLinkActive]="['bg-slate-300', 'text-slate-700']"
+            >Hombres</a
+          >
         </li>
         <li>
-          <a routerLink="/gender/women" [routerLinkActive]="['bg-slate-300', 'text-slate-700']">Mujeres</a>
+          <a
+            routerLink="/gender/women"
+            [routerLinkActive]="['bg-slate-300', 'text-slate-700']"
+            >Mujeres</a
+          >
         </li>
         <li>
-          <a routerLink="/gender/kid" [routerLinkActive]="['bg-slate-300', 'text-slate-700']">Niños</a>
+          <a
+            routerLink="/gender/kid"
+            [routerLinkActive]="['bg-slate-300', 'text-slate-700']"
+            >Niños</a
+          >
         </li>
       </ul>
     </div>
@@ -40,17 +52,36 @@
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
       <li>
-        <a routerLink="/gender/men" [routerLinkActive]="['bg-slate-300', 'text-slate-700']">Hombres</a>
+        <a
+          routerLink="/gender/men"
+          [routerLinkActive]="['bg-slate-300', 'text-slate-700']"
+          >Hombres</a
+        >
       </li>
       <li>
-        <a routerLink="/gender/women" [routerLinkActive]="['bg-slate-300', 'text-slate-700']">Mujeres</a>
+        <a
+          routerLink="/gender/women"
+          [routerLinkActive]="['bg-slate-300', 'text-slate-700']"
+          >Mujeres</a
+        >
       </li>
       <li>
-        <a routerLink="/gender/kid" [routerLinkActive]="['bg-slate-300', 'text-slate-700']">Niños</a>
+        <a
+          routerLink="/gender/kid"
+          [routerLinkActive]="['bg-slate-300', 'text-slate-700']"
+          >Niños</a
+        >
       </li>
     </ul>
   </div>
-  <div class="navbar-end">
-    <!-- <a class="btn">Button</a> -->
+  <div class="navbar-end flex justify-end">
+    @if (authService.authStatus() === "authenticated") {
+      <button class="btn btn-ghost">{{ authService.user()?.fullName }}</button>
+      <a class="btn btn-sm btn-error" (click)="authService.logout()">Salir</a>
+    } @else if (authService.authStatus() === "not-authenticated") {
+      <a routerLink="/auth/login" class="btn btn-secondary">Login</a>
+    } @else {
+      <a class="btn btn-ghost">...</a>
+    }
   </div>
 </div>

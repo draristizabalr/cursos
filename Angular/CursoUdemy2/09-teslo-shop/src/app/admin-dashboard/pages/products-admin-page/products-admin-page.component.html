@@ -1,0 +1,30 @@
+<h1 class="text-2xl font-bold">Listado de productos</h1>
+<h3 class="text-lg">
+  Total de productos:
+  <span class="text-accent font-bold">{{
+    productsResource.value()?.count ?? 0
+  }}</span>
+</h3>
+<div class="divider"></div>
+
+@if (productsResource.isLoading()) {
+  <div class="w-full h-full flex justify-center items-center">
+    <span class="loading loading-ring loading-xl"></span>
+  </div>
+} @else {
+  <div class="flex items-center gap-2 py-4">
+    <select class="select select-bordered w-16" (input)="onChangeSelection($event)">
+      @for (option of options; track $index) {
+        <option [value]="option" [selected]="productsPerPage() === option">{{ option }}</option>
+      }
+    </select>
+
+    <app-paginator
+      [currentPage]="paginatorService.currentPage()"
+      [pages]="productsResource.value()?.pages ?? 0"
+    ></app-paginator>
+  </div>
+  <products-table
+    [products]="productsResource.value()?.products ?? []"
+  ></products-table>
+}
