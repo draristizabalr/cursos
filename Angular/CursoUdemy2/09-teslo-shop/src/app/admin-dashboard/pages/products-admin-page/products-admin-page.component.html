@@ -19,6 +19,12 @@
       }
     </select>
 
+    <div class="flex flex-1"></div>
+
+    <a class="btn btn-primary" routerLink="/admin/product/new">
+      Nuevo producto
+    </a>
+
     <app-paginator
       [currentPage]="paginatorService.currentPage()"
       [pages]="productsResource.value()?.pages ?? 0"

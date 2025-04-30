@@ -75,6 +75,9 @@
     </ul>
   </div>
   <div class="navbar-end flex justify-end">
+    @if (authService.isAdmin()) {
+      <a routerLink="/admin" class="btn btn-info">Admin Panel</a>
+    }
     @if (authService.authStatus() === "authenticated") {
       <button class="btn btn-ghost">{{ authService.user()?.fullName }}</button>
       <a class="btn btn-sm btn-error" (click)="authService.logout()">Salir</a>
