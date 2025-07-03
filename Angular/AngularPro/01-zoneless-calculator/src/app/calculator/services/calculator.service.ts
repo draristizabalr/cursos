@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 
-const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-const operators = ['+', '-', 'x', '÷'];
+export const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+export const operators = ['+', '-', 'x', '÷'];
 const specialOperators = ['C', '+/-', '.', 'Backspace', '=', '%'];
 
 @Injectable({
@@ -76,6 +76,7 @@ export class CalculatorService {
 
         this.resultText.update((text) => {
           if (text === '') return '0.';
+          if (text === '0') return '0.';
           return text + '.';
         });
         return;
