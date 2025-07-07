@@ -1,0 +1,12 @@
+<header class="w-screen bg-blue-300">
+  <nav class="flex flex-row justify-center items-center gap-6 py-2">
+    @for (route of routes; track $index) {
+      <a
+        [routerLink]="route.path"
+        class="bg-white capitalize border border-slate-500 rounded-md py-2 px-4 transition duration-300"
+        routerLinkActive="bg-blue-500! text-slate-50"
+        >{{ route.path }}</a
+      >
+    }
+  </nav>
+</header>
