@@ -29,8 +29,8 @@ export default class PokemonsPageComponent implements OnInit {
 
   // Signals
   currentPage = toSignal(
-    this.route.queryParamMap.pipe(
-      map((params) => params.get('page') ?? '1'),
+    this.route.params.pipe(
+      map((params) => params['page'] ?? '1'),
       map((page) => (isNaN(+page) ? 1 : +page)),
       map((page) => Math.max(1, page)),
     ),
@@ -62,10 +62,10 @@ export default class PokemonsPageComponent implements OnInit {
     let pageToLoad = this.currentPage()! + page;
 
     if (pageToLoad < 1) {
-      this.router.navigate([], { queryParams: { page: 1 } });
+      this.router.navigate(['/pokemons', 'page', 1]);
       pageToLoad = 1;
     }
 
-    this.router.navigate([], { queryParams: { page: pageToLoad } });
+    this.router.navigate(['/pokemons', 'page', pageToLoad]);
   }
 }

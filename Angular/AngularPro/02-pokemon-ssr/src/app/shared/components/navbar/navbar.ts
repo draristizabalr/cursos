@@ -8,8 +8,19 @@ import { routes } from 'src/app/app.routes';
   imports: [RouterLink, RouterLinkActive],
 })
 export class Navbar {
-  notOptionNavigation = ['**', 'pokemon/:id'];
-  routes = routes.filter(
-    (route) => !this.notOptionNavigation.includes(route.path!),
-  );
+
+  routes = [
+    {
+      name: 'Pokemons',
+      path: 'pokemons/page/1'
+    },
+    {
+      name: 'Pricing',
+      path: 'pricing'
+    },
+    {
+      name: 'Contact',
+      path: 'contact'
+    },
+  ]
 }
