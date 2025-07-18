@@ -4,7 +4,7 @@ import {
   HttpParams,
 } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, map, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { SimplePokemon, PokeAPIResponse, Result, Pokemon } from '../interfaces';
 import { Meta, Title } from '@angular/platform-browser';
 
@@ -40,13 +40,19 @@ export class PokemonsService {
   }
 
   loadPokemon(id: string) {
-    if (!id) return of(null);
-
     const url = `${urlBase}/${id}`;
 
     return this.http.get<Pokemon>(url).pipe(
       catchError((error: HttpErrorResponse) => {
-        throw error.message;
+        if (error.status === 0) {
+          console.log('An error ocurred:', error.error);
+        } else {
+          console.log(`Backend returned code ${error.status}, body: ${error.error}`);
+        }
+
+        const errorMessage = error.error ?? 'An error ocurred';
+
+        return throwError(() => new Error(errorMessage));
       }),
       tap(({ name, id }) => {
         const pageTitle = `#${id} - ${name}`;

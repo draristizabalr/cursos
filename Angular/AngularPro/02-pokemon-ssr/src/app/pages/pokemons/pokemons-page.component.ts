@@ -23,7 +23,7 @@ import { map } from 'rxjs';
 })
 export default class PokemonsPageComponent implements OnInit {
   // Injects
-  private pokemonsService = inject(PokemonsService);
+  private pokemonsService = inject<PokemonsService>(PokemonsService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 

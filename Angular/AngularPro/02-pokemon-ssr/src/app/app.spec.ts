@@ -1,25 +1,42 @@
-import { provideZonelessChangeDetection } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
+import { Component, provideZonelessChangeDetection } from '@angular/core';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { App } from './app';
+import { Navbar } from '@shared/components/navbar/navbar';
+
+@Component({
+  selector: 'app-navbar',
+  template: `<h1>Navbar component mock</h1>`
+})
+class NavBarMock {}
 
 describe('App', () => {
+  let fixture: ComponentFixture<App>;
+  let app: App;
+  let compiled: HTMLElement;
+
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideZonelessChangeDetection()]
-    }).compileComponents();
+      providers: [provideZonelessChangeDetection()],
+    }).overrideComponent(App, {
+      add: { imports: [NavBarMock] },
+      remove: { imports: [Navbar] },
+    });
+
+    fixture = TestBed.createComponent(App);
+    app = fixture.componentInstance;
+    compiled = fixture.nativeElement;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(App);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, pokemon-ssr');
+  it('should render the navbar and router-outlet', () => {
+    const routerOutletContent = compiled.querySelector('div') as HTMLDivElement;
+
+    expect(compiled.querySelector('app-navbar')).toBeTruthy();
+    expect(routerOutletContent.querySelector('router-outlet')).toBeTruthy();
   });
 });
