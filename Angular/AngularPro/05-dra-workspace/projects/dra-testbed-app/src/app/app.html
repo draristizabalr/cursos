@@ -1,0 +1,12 @@
+<lib-dra-side-menu
+  [isAuthenticated]="isAuthenticated()"
+  [titleColor]="TitleColor.purple"
+  companyName="DRA"
+  companySubName="enterprise"
+  [routes]="routes"
+  (signIn)="onLogin()"
+  (signOut)="onLogout()"
+></lib-dra-side-menu>
+<main class="ml-80">
+  <router-outlet></router-outlet>
+</main>
