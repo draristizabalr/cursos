@@ -1,0 +1,17 @@
+{
+  "name": "02-bases",
+  "version": "0.0.1",
+  "description": "Esta es mi primera aplicación real de Node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js"
+  },
+  "author": "David Ricardo Aristizabal",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "get-age": "^1.0.1"
+  }
+}
