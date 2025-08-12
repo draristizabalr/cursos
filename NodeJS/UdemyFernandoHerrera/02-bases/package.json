@@ -4,9 +4,11 @@
   "description": "Esta es mi primera aplicación real de Node",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.js",
-    "dev": "node --watch src/app.js"
+    "test": "jest",
+    "start": "node src/app.ts",
+    "dev": "node --watch src/app.ts",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "author": "David Ricardo Aristizabal",
   "license": "MIT",
@@ -16,6 +18,10 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
-    "@types/node": "^24.1.0"
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.1.0",
+    "jest": "^30.0.5",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.1"
   }
 }
