@@ -1,0 +1,22 @@
+{
+  "name": "04-multiplation-app",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.ts",
+    "dev": "node --watch src/app.ts -b 7"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "@types/yargs": "^17.0.33"
+  },
+  "dependencies": {
+    "yargs": "^18.0.0"
+  }
+}
