@@ -33,10 +33,10 @@ export const yarg = yargs(hideBin(process.argv))
     describe: "File destination",
   })
   .option("e", {
-    alias: "extention",
+    alias: "extension",
     type: "string",
     default: ".txt",
-    describe: "File extention",
+    describe: "File extension",
   })
   .check((argv) => {
     if (argv.b < 1) throw "Error: base must be a positive number";
@@ -44,7 +44,7 @@ export const yarg = yargs(hideBin(process.argv))
     if (argv.l < 1) throw "Error: limit must be a positive number";
 
     if (argv.e[0] !== ".")
-      throw "Error: extention file must have to begin with '.'";
+      throw "Error: extension file must have to begin with '.'";
 
     return true;
   })

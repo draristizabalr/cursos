@@ -1,5 +1,5 @@
 import { CreateTable } from "../domain/use-cases/create-table.use-case.ts";
-import { SaveFile } from "./save-file.use-case.ts";
+import { SaveFile } from "../domain/use-cases/save-file.use-case.ts";
 
 interface RunOptions {
   base: number;
@@ -7,11 +7,11 @@ interface RunOptions {
   show: boolean;
   name: string;
   destination: string;
-  extention: string;
+  extension: string;
 }
 
 export class ServerApp {
-  static run({ base, limit, show, name, destination, extention }: RunOptions) {
+  static run({ base, limit, show, name, destination, extension }: RunOptions) {
     console.log("Server running ...");
 
     const table = new CreateTable().execute({ base, limit });
@@ -19,7 +19,7 @@ export class ServerApp {
       fileContent: table,
       destination,
       fileName: name,
-      extention,
+      extension,
     });
 
     if (show) console.log(table);

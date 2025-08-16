@@ -16,8 +16,8 @@ async function main() {
     s: show,
     n: name,
     d: destination,
-    e: extention,
+    e: extension,
   } = yarg;
 
-  ServerApp.run({ base, limit, show, name, destination, extention });
+  ServerApp.run({ base, limit, show, name, destination, extension });
 }
