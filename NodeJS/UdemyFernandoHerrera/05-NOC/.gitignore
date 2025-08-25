@@ -7,3 +7,6 @@ logs
 
 # Dot Environments
 .env
+
+# Mongo DB
+mongo/
