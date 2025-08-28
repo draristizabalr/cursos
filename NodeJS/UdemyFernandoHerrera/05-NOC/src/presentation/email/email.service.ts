@@ -35,8 +35,6 @@ export class EmailServer {
         attachments,
       });
 
-      console.log(sentInformation);
-
       return true;
     } catch {
 

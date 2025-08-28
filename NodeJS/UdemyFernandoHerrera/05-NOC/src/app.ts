@@ -1,5 +1,5 @@
 import { envs } from "./config/plugins/envs.plugin";
-import { LogModel, MongoDatabase } from "./data/mongo";
+import { MongoDatabase } from "./data/mongo";
 import { Server } from "./presentation/server";
 
 (async () => {
@@ -12,6 +12,24 @@ async function main() {
     dbName: envs.MONGO_DB_NAME,
   });
 
+  // const newLog = await prisma.logMode.create({
+  //   data: {
+  //     level: 'HIGH',
+  //     message: 'Test message',
+  //     origin: 'App.ts',
+  //   }
+  // })
+
+  // console.log({newLog});
+
+  // const logs = await prisma.logMode.findMany({
+  //   where: {
+  //     level: 'HIGH'
+  //   }
+  // })
+
+  // console.log(logs);
+
   // Crear una colección = tabla, documento = registro
   // const newLog = await LogModel.create({
   //   message: 'Test message from Mongo',
@@ -22,8 +40,5 @@ async function main() {
   // await newLog.save();
   // console.log(newLog);
 
-  const logs = await LogModel.find();
-  console.log(logs);
-
-  // Server.start();
+  Server.start();
 }

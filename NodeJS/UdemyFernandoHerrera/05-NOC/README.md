@@ -8,15 +8,9 @@ El objetivo es crear una serie de tareas usando **_Arquitectura Limpia_** con `T
 
 1. Clonar el archivo env.template a .env
 2. Configurar las variables de entorno
-
-```
-PORT=3000
-
-MAILER_EMAIL=
-MAILER_SECRET_KEY=
-
-PROD=false
-```
-
 3. Ejecutar el código `npm install`.
-4. Después ejecutar el comando `npm run dev`.
+4. Levantar las bases de datos con el comando
+  ```
+  docker compose up -d
+  ```
+5. Después ejecutar el comando ```npm run dev```.
