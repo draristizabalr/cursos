@@ -12,33 +12,5 @@ async function main() {
     dbName: envs.MONGO_DB_NAME,
   });
 
-  // const newLog = await prisma.logMode.create({
-  //   data: {
-  //     level: 'HIGH',
-  //     message: 'Test message',
-  //     origin: 'App.ts',
-  //   }
-  // })
-
-  // console.log({newLog});
-
-  // const logs = await prisma.logMode.findMany({
-  //   where: {
-  //     level: 'HIGH'
-  //   }
-  // })
-
-  // console.log(logs);
-
-  // Crear una colección = tabla, documento = registro
-  // const newLog = await LogModel.create({
-  //   message: 'Test message from Mongo',
-  //   origin: 'app.ts',
-  //   level: 'low'
-  // });
-
-  // await newLog.save();
-  // console.log(newLog);
-
   Server.start();
 }

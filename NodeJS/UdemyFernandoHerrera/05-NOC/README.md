@@ -9,8 +9,12 @@ El objetivo es crear una serie de tareas usando **_Arquitectura Limpia_** con `T
 1. Clonar el archivo env.template a .env
 2. Configurar las variables de entorno
 3. Ejecutar el código `npm install`.
-4. Levantar las bases de datos con el comando
-  ```
-  docker compose up -d
-  ```
-5. Después ejecutar el comando ```npm run dev```.
+4. Levantar las bases de datos con el comando.
+
+    ``` DOCKER
+    docker desktop start
+    docker compose up -d
+    ```
+
+5. Al tener el contenedor ejecutandose se debe ejecutar el comando ```npx prisma migrate dev```.
+6. Después ejecutar el comando ```npm run dev```.
