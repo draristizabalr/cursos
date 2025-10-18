@@ -10,7 +10,7 @@
     "prettier:format": "npx prettier . --check",
     "docker:test": "docker compose -f docker-compose.test.yml --env-file .env.test up -d",
     "test": "npm run docker:test && jest",
-    "test:watch": "npm run docker:test && jest --watch",
+    "test:watch": "npm run docker:test && jest --watchAll",
     "test:coverage": "npm run docker:test && jest --coverage"
   },
   "keywords": [],

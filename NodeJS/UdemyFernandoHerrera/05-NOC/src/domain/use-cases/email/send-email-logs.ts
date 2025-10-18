@@ -16,6 +16,7 @@ export class SendEmailLogs implements SendLogEmailUseCase {
     try {
       const sent = this.emailService.sendEmailWithFileSystemLogs(to);
       if (!sent) throw new Error("Email log not sent");
+
       return true;
     } catch (error) {
       const log = new LogEntity({
