@@ -28,6 +28,8 @@ describe('send-email-logs test', () => {
 
     expect( result ).toBe(true);
     expect( mockEmailService.sendEmailWithFileSystemLogs ).toHaveBeenCalledTimes(1);
+    expect( mockLogRepository.saveLog ).not.toHaveBeenCalledWith( expect.any(LogEntity));
+
   });
 
   test('should not call SendEmail', async () => {
