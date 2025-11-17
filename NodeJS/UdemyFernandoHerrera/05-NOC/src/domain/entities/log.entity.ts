@@ -1,7 +1,7 @@
 export enum LogSeverityLevel {
   low = "low",
   medium = "medium",
-  high = "high",
+  high = "high"
 }
 
 export interface LogEntityOptions {
@@ -18,11 +18,11 @@ export class LogEntity {
   public origin: string;
 
   constructor(options: LogEntityOptions) {
-    const { level, message, origin, createdAt = new Date() } = options;
+    const { level, message, origin, createdAt } = options;
 
     this.level = level;
     this.message = message;
-    this.createdAt = new Date();
+    this.createdAt = createdAt ? new Date(createdAt) : new Date();
     this.origin = origin;
   }
 
@@ -33,7 +33,6 @@ export class LogEntity {
     if (!level) throw new Error("Level is required");
 
     const log = new LogEntity({ message, level, createdAt, origin });
-    log.createdAt = new Date();
 
     return log;
   }

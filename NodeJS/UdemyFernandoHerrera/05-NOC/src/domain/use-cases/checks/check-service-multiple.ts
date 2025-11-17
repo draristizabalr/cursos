@@ -35,7 +35,6 @@ export class CheckServiceMultiple implements CheckServiceUseCase {
 
       this.callLogs(log);
       this.successCallback && this.successCallback();
-      console.log(`${url} is ok`);
 
       return true;
     } catch (error) {

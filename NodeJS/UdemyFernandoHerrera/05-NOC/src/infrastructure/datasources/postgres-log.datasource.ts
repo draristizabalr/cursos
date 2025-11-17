@@ -14,12 +14,12 @@ export class PostgresLog implements LogDatasource {
   async saveLog(log: LogEntity): Promise<void> {
     const level = SeverityLevelEnum[log.level];
 
-    console.log(await prismaClient.logMode.create({
+    await prismaClient.logMode.create({
       data: {
         ...log,
         level
       },
-    }));
+    });
   }
 
   async getLog(severityLevel: LogSeverityLevel): Promise<LogEntity[]> {
