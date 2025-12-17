@@ -1,3 +1,5 @@
+import { DevJobsAvatar } from "./DevJobsAvatar";
+
 export function Header() {
   return (
     <header>
@@ -22,7 +24,7 @@ export function Header() {
       </nav>
 
       <div>
-        <devjobs-avatar></devjobs-avatar>
+        <DevJobsAvatar />
       </div>
     </header>
   );

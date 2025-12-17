@@ -1,4 +1,6 @@
-export const UBICATION_OPTIONS = [
+import type { FilterOption } from '../../../types';
+
+export const UBICATION_OPTIONS: FilterOption[] = [
   { value: '', label: 'Ubicación' },
   { value: 'valencia', label: 'Valencia' },
   { value: 'buenos aires', label: 'Buenos Aires' },
@@ -6,4 +8,4 @@ export const UBICATION_OPTIONS = [
   { value: 'bogota', label: 'Bogotá' },
   { value: 'cdmx', label: 'Ciudad de México' },
   { value: 'guadalajara', label: 'Guadalajara' },
-]
+];

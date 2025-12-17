@@ -1,4 +1,9 @@
-export function JobSearch({ name, id }) {
+interface JobSearchProps {
+  name: string;
+  id: string;
+}
+
+export function JobSearch({ name, id }: JobSearchProps) {
   return (
     <div className="search-bar">
       <svg

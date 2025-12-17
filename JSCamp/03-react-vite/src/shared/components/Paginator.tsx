@@ -1,32 +1,48 @@
+import { CSSProperties, MouseEvent } from 'react';
 import styles from '../css/paginator.module.css';
 
-export function Paginator({ currentPage = 1, totalPages = 10, onPageChange }) {
+interface PaginatorProps {
+  currentPage?: number;
+  totalPages?: number;
+  onPageChange: (page: number) => void;
+}
+
+interface HandleChangePageParams {
+  event: MouseEvent<HTMLAnchorElement>;
+  page: number;
+}
+
+export function Paginator({ 
+  currentPage = 1, 
+  totalPages = 10, 
+  onPageChange 
+}: PaginatorProps) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
 
-  const stylePrevButton = isFirstPage
+  const stylePrevButton: CSSProperties = isFirstPage
     ? { pointerEvents: "none", opacity: 0.5 }
     : {};
-  const styleNextButton = isLastPage
+  const styleNextButton: CSSProperties = isLastPage
     ? { pointerEvents: "none", opacity: 0.5 }
     : {};
 
-  const handlePrevClick = (event) => {
+  const handlePrevClick = (event: MouseEvent<HTMLAnchorElement>): void => {
     event.preventDefault();
     if (!isFirstPage) {
       onPageChange(currentPage - 1);
     }
   };
 
-  const handleNextClick = (event) => {
+  const handleNextClick = (event: MouseEvent<HTMLAnchorElement>): void => {
     event.preventDefault();
     if (!isLastPage) {
       onPageChange(currentPage + 1);
     }
   };
 
-  const handleChangePage = ({ event, page } ) => {
+  const handleChangePage = ({ event, page }: HandleChangePageParams): void => {
     event.preventDefault();
     onPageChange(page);
   }

@@ -1,39 +1,50 @@
+import { FormEvent, useId } from "react";
 import { JobFilter } from "./JobFilter";
 import { JobSearch } from "./JobSearch";
 import { TECHNOLOGY_OPTIONS } from "../constants/technology-filter";
 import { UBICATION_OPTIONS } from "../constants/ubication-filter";
 import { EXPERIENCE_OPTIONS } from "../constants/experience-filter";
-import { useId } from "react";
+import type { Filters, FilterChange, FilterOption } from "../../../types";
 
-export function JobForm({ onSearch }) {
+interface JobFormProps {
+  onSearch: (filters: Filters) => void;
+}
+
+interface FilterElement {
+  id: string;
+  filterName: string;
+  options: FilterOption[];
+}
+
+export function JobForm({ onSearch }: JobFormProps) {
   const idText = useId();
   const idTechnology = useId();
   const idExperience = useId();
   const idUbication = useId();
 
-  const filterElements = [
+  const filterElements: FilterElement[] = [
     { id: idTechnology, filterName: "technology", options: TECHNOLOGY_OPTIONS },
     { id: idUbication, filterName: "modalidad", options: UBICATION_OPTIONS },
     { id: idExperience, filterName: "nivel", options: EXPERIENCE_OPTIONS },
   ];
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.currentTarget);
 
-    const filters = {
-      search: formData.get(idText),
-      technology: formData.get(idTechnology),
-      modalidad: formData.get(idUbication),
-      nivel: formData.get(idExperience),
+    const filters: Filters = {
+      search: formData.get(idText) as string | null,
+      technology: formData.get(idTechnology) as string | null,
+      modalidad: formData.get(idUbication) as string | null,
+      nivel: formData.get(idExperience) as string | null,
     };
 
     onSearch(filters);
   };
 
-  const handleOnFilter = ({ filter, valueFilter }) => {
-    const filters = {
+  const handleOnFilter = ({ filter, valueFilter }: FilterChange): void => {
+    const filters: Filters = {
       [filter]: valueFilter
     };
 
@@ -49,7 +60,7 @@ export function JobForm({ onSearch }) {
         <JobSearch name={idText} id={idText} />
 
         <div className="search-filters">
-          {filterElements.map(({ id, filterName, options}) => (
+          {filterElements.map(({ id, filterName, options }) => (
             <JobFilter
               key={id}
               name={id}
