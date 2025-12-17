@@ -1,4 +1,4 @@
-export function JobSearch() {
+export function JobSearch({ name, id }) {
   return (
     <div className="search-bar">
       <svg
@@ -18,6 +18,8 @@ export function JobSearch() {
         <path d="M21 21l-6 -6" />
       </svg>
       <input
+        name={name}
+        id={id}
         type="text"
         placeholder="Buscar trabajos, empresas o habilidades"
       />
