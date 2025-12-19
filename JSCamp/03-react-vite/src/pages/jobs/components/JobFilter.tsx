@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import type { FilterOption, FilterChange } from '../../../types';
+import type { FilterOption, FilterChange } from '../interfaces';
 
 interface JobFilterProps {
   name: string;

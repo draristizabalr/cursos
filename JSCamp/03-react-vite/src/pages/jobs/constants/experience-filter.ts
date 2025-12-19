@@ -1,4 +1,4 @@
-import type { FilterOption } from '../../../types';
+import type { FilterOption } from '../interfaces';
 
 export const EXPERIENCE_OPTIONS: FilterOption[] = [
   { value: '', label: 'Experiencia'},

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { JobData } from "../../../types";
+import type { JobData } from "../interfaces";
 
 interface JobCardProps {
   data: JobData;

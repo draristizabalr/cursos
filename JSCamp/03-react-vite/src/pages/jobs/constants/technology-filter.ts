@@ -1,4 +1,4 @@
-import type { FilterOption } from '../../../types';
+import type { FilterOption } from '../interfaces';
 
 export const TECHNOLOGY_OPTIONS: FilterOption[] = [
   { value: '', label: 'Tecnología' },

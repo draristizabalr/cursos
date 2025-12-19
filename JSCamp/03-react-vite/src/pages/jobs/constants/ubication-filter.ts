@@ -1,9 +1,9 @@
-import type { FilterOption } from '../../../types';
+import type { FilterOption } from '../interfaces';
 
 export const UBICATION_OPTIONS: FilterOption[] = [
   { value: '', label: 'Ubicación' },
   { value: 'valencia', label: 'Valencia' },
-  { value: 'buenos aires', label: 'Buenos Aires' },
+  { value: 'bsas', label: 'Buenos Aires' },
   { value: 'barcelona', label: 'Barcelona' },
   { value: 'bogota', label: 'Bogotá' },
   { value: 'cdmx', label: 'Ciudad de México' },

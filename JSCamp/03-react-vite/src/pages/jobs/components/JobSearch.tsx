@@ -1,9 +1,20 @@
+import { FormEvent } from "react";
+
 interface JobSearchProps {
   name: string;
   id: string;
+  onSearch: (value: string) => void
 }
 
-export function JobSearch({ name, id }: JobSearchProps) {
+export function JobSearch({ name, id, onSearch }: JobSearchProps) {
+  const handleOnChange = (event: FormEvent<HTMLInputElement>) => {
+    event.preventDefault();
+
+    const input = event.target as HTMLInputElement;
+
+    onSearch(input.value);
+  }
+
   return (
     <div className="search-bar">
       <svg
@@ -27,6 +38,7 @@ export function JobSearch({ name, id }: JobSearchProps) {
         id={id}
         type="text"
         placeholder="Buscar trabajos, empresas o habilidades"
+        onInput={handleOnChange}
       />
     </div>
   );

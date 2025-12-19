@@ -1,0 +1,1 @@
+export type IconName = 'briefcase' | 'buildings' | 'config' | 'search';

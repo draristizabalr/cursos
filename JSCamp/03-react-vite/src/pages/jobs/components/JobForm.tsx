@@ -4,7 +4,7 @@ import { JobSearch } from "./JobSearch";
 import { TECHNOLOGY_OPTIONS } from "../constants/technology-filter";
 import { UBICATION_OPTIONS } from "../constants/ubication-filter";
 import { EXPERIENCE_OPTIONS } from "../constants/experience-filter";
-import type { Filters, FilterChange, FilterOption } from "../../../types";
+import type { Filters, FilterChange, FilterOption } from "../interfaces";
 
 interface JobFormProps {
   onSearch: (filters: Filters) => void;
@@ -51,13 +51,21 @@ export function JobForm({ onSearch }: JobFormProps) {
     onSearch(filters);
   };
 
+  const handleOnSearchInput = (value: string) => {
+    const filters: Filters = {
+      search: value
+    };
+
+    onSearch(filters);
+  }
+
   return (
     <section className="jobs-search">
       <h1>Encuentra tu próximo trabajo</h1>
       <p>Explora miles de oportunidades en el sector tecnológico.</p>
 
       <form role="search" id="filterForm" onSubmit={handleSubmit}>
-        <JobSearch name={idText} id={idText} />
+        <JobSearch name={idText} id={idText} onSearch={handleOnSearchInput}/>
 
         <div className="search-filters">
           {filterElements.map(({ id, filterName, options }) => (
