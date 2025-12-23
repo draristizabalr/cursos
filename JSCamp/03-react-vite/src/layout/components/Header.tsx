@@ -1,15 +1,16 @@
-import { HeaderLink } from "../interfaces/header-link";
-import { DevJobsAvatar } from "./DevJobsAvatar";
+import type { HeaderLink } from "../interfaces/header-link";
+import { DevJobsAvatar } from "../../shared/components/DevJobsAvatar";
+import { Link } from "../../shared/components/Link";
 
 export function Header() {
   const headerLinks: HeaderLink[] = [
     { href: "/", label: "Inicio" },
     { href: "/search", label: "Empleos" },
   ];
-  
+
   return (
     <header>
-      <a href="/" style={{ textDecoration: "none" }}>
+      <Link href="/" style={{ textDecoration: "none" }}>
         <h1 style={{ color: "white" }}>
           <svg
             fill="none"
@@ -25,10 +26,12 @@ export function Header() {
           </svg>
           DevJobs
         </h1>
-      </a>
+      </Link>
       <nav>
         {headerLinks.map(({ href, label }) => (
-          <a href={href}>{label}</a>
+          <Link href={href} key={href}>
+            {label}
+          </Link>
         ))}
       </nav>
 

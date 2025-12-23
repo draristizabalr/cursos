@@ -9,67 +9,24 @@ import jobsData from "../../assets/data/data.json";
 import { RESULTS_PER_PAGE } from "./constants/jobs-page";
 // Interfaces
 import type { Job, Filters } from "./interfaces";
+import { useSearchForm } from "./hooks/useSearchForm";
 
 // Cast de los datos JSON al tipo Job[]
 const jobs: Job[] = jobsData as Job[];
 
 export function JobsPage() {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [filtersState, setFiltersState] = useState<Filters>({});
 
-  const isFiltered = Object.keys(filtersState).length === 0 ? false : true;
+  const { filtersState, filteredJobs, searchJob, handleOnSearch } =
+    useSearchForm({ jobs });
+
   const isSearching = filtersState.search ? true : false;
-  const filteredJobs = !isFiltered ? jobs : filterJobs();
-  const jobsFinded = isSearching ? searchJob(filtersState.search!) : filteredJobs;
+  const jobsFinded = isSearching
+    ? searchJob(filtersState.search!)
+    : filteredJobs;
 
   function handlePageChange(page: number): void {
     setCurrentPage(page);
-  }
-
-  function filterJobs(): Job[] {
-
-    return jobs.filter((job) => {
-      const { data } = job;      
-      const { modalidad, technology, nivel } = filtersState;
-  
-      if (modalidad && data.modalidad !== modalidad) {
-        return false;
-      }
-      
-      if (technology) {
-        const jobTech = Array.isArray(data.technology) 
-          ? data.technology 
-          : [data.technology];
-        if (!jobTech.includes(technology)) {
-          return false;
-        }
-      }
-      
-      if (nivel && data.nivel !== nivel) {
-        return false;
-      }
-  
-      return true;
-    });
-  }
-
-  function searchJob(valueSearch: string): Job[] {
-    return filteredJobs.filter((job) => {
-      const title: string = job.titulo.toLowerCase();
-      if (!title.includes(valueSearch)) {
-        return false;
-      }
-
-      return true;
-    })
-  }
-
-  function handleOnSearch(filters: Filters): void {
-    setFiltersState((prevFilters: Filters) => ({
-      ...prevFilters,
-      ...filters
-    }));
-    setCurrentPage(1);
   }
 
   const pagedResults = jobsFinded.slice(
@@ -79,11 +36,16 @@ export function JobsPage() {
 
   const totalPages = Math.ceil(jobsFinded.length / RESULTS_PER_PAGE);
 
+  const handleOnSubmitSearch = (filters: Filters): void => {
+    handleOnSearch(filters);
+    setCurrentPage(1);
+  };
+
   return (
     <main>
-      <JobForm onSearch={handleOnSearch} />
+      <JobForm onSearch={handleOnSubmitSearch} />
 
-      <h2 style={{ textAlign: 'center' }}>Resultados de búsqueda</h2>
+      <h2 style={{ textAlign: "center" }}>Resultados de búsqueda</h2>
       <div className="jobs-listings">
         {pagedResults.map((job) => (
           <JobCard
