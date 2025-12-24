@@ -22,7 +22,8 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: var(--background);
   color: var(--text-primary);
   min-height: 100vh;
@@ -42,7 +43,7 @@ h1 {
   svg {
     width: 2rem;
     height: 2rem;
-    color: var(--primary-light)
+    color: var(--primary-light);
   }
 }
 
@@ -57,7 +58,6 @@ header {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-primary);
-  
   }
 }
 
@@ -77,10 +77,15 @@ nav {
     color: var(--text-secondary);
     transition: color 0.2s ease;
     font-weight: 500;
-    
-    &:hover, &:focus {
+
+    &:hover {
       color: var(--primary);
-      outline: none;
+    }
+
+    &:focus-visible {
+      color: var(--primary);
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
     }
   }
 }
@@ -109,7 +114,7 @@ main > section:nth-child(1) {
   h1 {
     padding-top: 36px;
   }
-  
+
   & > img {
     position: absolute;
     width: 100%;
@@ -118,7 +123,11 @@ main > section:nth-child(1) {
     z-index: -1;
     left: 0;
     right: 0;
-    mask-image: linear-gradient(to bottom, rgba(16, 25, 34, 1) 5%, rgba(16, 25, 34, 1) 80%);
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(16, 25, 34, 1) 5%,
+      rgba(16, 25, 34, 1) 80%
+    );
   }
 }
 
@@ -177,18 +186,19 @@ button {
   white-space: nowrap;
 
   &:hover, /* pseudo-clase que significa que el ratón está encima */
-  &:focus { /* pseudo-clase que significa que el elemento tiene el foco */
+  &:focus {
+    /* pseudo-clase que significa que el elemento tiene el foco */
     background-color: var(--primary-hover);
     outline: 2px solid white;
     outline-offset: 2px;
   }
 
-  &:active { 
-    transform: scale(0.90)
+  &:active {
+    transform: scale(0.9);
   }
 
   &:disabled {
-    opacity: .5;
+    opacity: 0.5;
     pointer-events: none;
   }
 }
@@ -208,7 +218,7 @@ main > section:nth-child(2) {
     }
 
     p {
-      opacity: .75;
+      opacity: 0.75;
     }
   }
 
@@ -236,7 +246,7 @@ main > section:nth-child(2) > div > div:first-child > p {
 main > section:nth-child(2) footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px
+  gap: 16px;
 }
 
 /* Feature Cards */
@@ -282,7 +292,7 @@ article {
   background-color: var(--card-bg);
   padding: 2rem;
   margin-bottom: 16px;
-  border-radius: 0.5rem;                   
+  border-radius: 0.5rem;
   box-shadow: 0px 1px 3px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -384,8 +394,6 @@ main h2 {
     }
   }
 }
-
-
 
 .button-apply-job {
   &.is-applied {

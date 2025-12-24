@@ -1,0 +1,11 @@
+.link-active {
+  background-color: #ccc;
+  color: #333;
+  border-radius: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5rem;
+}

@@ -6,11 +6,12 @@ export function Header() {
   const headerLinks: HeaderLink[] = [
     { href: "/", label: "Inicio" },
     { href: "/search", label: "Empleos" },
+    { href: "/contact", label: "Contacto" },
   ];
 
   return (
     <header>
-      <Link href="/" style={{ textDecoration: "none" }}>
+      <Link href="/" activeAnimation={false}>
         <h1 style={{ color: "white" }}>
           <svg
             fill="none"
