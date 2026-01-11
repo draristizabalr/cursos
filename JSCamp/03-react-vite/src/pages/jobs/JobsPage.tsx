@@ -1,40 +1,47 @@
 // React
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // Components
 import { JobCard } from "./components/JobCard";
 import { JobForm } from "./components/JobForm";
 import { Paginator } from "../../shared/components/Paginator";
-// Properties
-import jobsData from "../../assets/data/data.json";
 import { RESULTS_PER_PAGE } from "./constants/jobs-page";
 // Interfaces
-import type { Job, Filters } from "./interfaces";
+import type { Filters } from "./interfaces";
 import { useSearchForm } from "./hooks/useSearchForm";
-
-// Cast de los datos JSON al tipo Job[]
-const jobs: Job[] = jobsData as Job[];
+import { ApiJobResponse, Job } from "./interfaces/api-job-reponse";
+import { LoadingDialog } from "@/shared/components/LoadingDialog";
 
 export function JobsPage() {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [total, setTotal] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const { filtersState, filteredJobs, searchJob, handleOnSearch } =
-    useSearchForm({ jobs });
+  useEffect(() => {
+    async function fetchJobs() {
+      try {
+        setLoading(true);
+        const response = await fetch("https://jscamp-api.vercel.app/api/jobs");
+        const data = (await response.json()) as ApiJobResponse;
+        setJobs(data.data);
+        setTotal(data.total);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-  const isSearching = filtersState.search ? true : false;
-  const jobsFinded = isSearching
-    ? searchJob(filtersState.search!)
-    : filteredJobs;
+    fetchJobs();
+  }, []);
+
+  const { handleOnSearch } = useSearchForm();
 
   function handlePageChange(page: number): void {
     setCurrentPage(page);
   }
 
-  const pagedResults = jobsFinded.slice(
-    (currentPage - 1) * RESULTS_PER_PAGE,
-    currentPage * RESULTS_PER_PAGE
-  );
-
-  const totalPages = Math.ceil(jobsFinded.length / RESULTS_PER_PAGE);
+  const totalPages = Math.ceil(total / RESULTS_PER_PAGE);
 
   const handleOnSubmitSearch = (filters: Filters): void => {
     handleOnSearch(filters);
@@ -47,16 +54,24 @@ export function JobsPage() {
 
       <h2 style={{ textAlign: "center" }}>Resultados de búsqueda</h2>
       <div className="jobs-listings">
-        {pagedResults.map((job) => (
-          <JobCard
-            key={job.id}
-            title={job.titulo}
-            company={job.empresa}
-            ubication={job.ubicacion}
-            description={job.descripcion}
-            data={job.data}
+        {loading ? (
+          <LoadingDialog
+            open={loading}
+            title="Cargando"
+            message="Cargando trabajos disponibles..."
           />
-        ))}
+        ) : (
+          jobs.map((job) => (
+            <JobCard
+              key={job.id}
+              title={job.titulo}
+              company={job.empresa}
+              ubication={job.ubicacion}
+              description={job.descripcion}
+              data={job.data}
+            />
+          ))
+        )}
       </div>
 
       <Paginator
