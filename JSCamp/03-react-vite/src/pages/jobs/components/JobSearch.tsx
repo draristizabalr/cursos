@@ -3,17 +3,12 @@ import { FormEvent } from "react";
 interface JobSearchProps {
   name: string;
   id: string;
-  onSearch: (value: string) => void
 }
 
-export function JobSearch({ name, id, onSearch }: JobSearchProps) {
+export function JobSearch({ name, id }: JobSearchProps) {
   const handleOnChange = (event: FormEvent<HTMLInputElement>) => {
     event.preventDefault();
-
-    const input = event.target as HTMLInputElement;
-
-    onSearch(input.value);
-  }
+  };
 
   return (
     <div className="search-bar">

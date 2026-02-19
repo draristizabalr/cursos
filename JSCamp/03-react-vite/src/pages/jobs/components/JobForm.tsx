@@ -1,4 +1,4 @@
-import { FormEvent, useId } from "react";
+import { FormEvent, useEffect, useId, useState } from "react";
 import { JobFilter } from "./JobFilter";
 import { JobSearch } from "./JobSearch";
 import { TECHNOLOGY_OPTIONS } from "../constants/technology-filter";
@@ -7,6 +7,7 @@ import { EXPERIENCE_OPTIONS } from "../constants/experience-filter";
 import type { Filters, FilterChange, FilterOption } from "../interfaces";
 
 interface JobFormProps {
+  filtersState: Filters;
   onSearch: (filters: Filters) => void;
 }
 
@@ -16,11 +17,28 @@ interface FilterElement {
   options: FilterOption[];
 }
 
-export function JobForm({ onSearch }: JobFormProps) {
+export function JobForm({ filtersState, onSearch }: JobFormProps) {
   const idText = useId();
   const idTechnology = useId();
   const idExperience = useId();
   const idUbication = useId();
+
+  const [isFiltered, setIsFiltered] = useState(false);
+
+  useEffect(() => {
+    async function checkFilters() {
+      if (
+        filtersState.technology ||
+        filtersState.modalidad ||
+        filtersState.nivel
+      ) {
+        setIsFiltered(true);
+      } else {
+        setIsFiltered(false);
+      }
+    }
+    checkFilters();
+  }, [filtersState]);
 
   const filterElements: FilterElement[] = [
     { id: idTechnology, filterName: "technology", options: TECHNOLOGY_OPTIONS },
@@ -45,19 +63,29 @@ export function JobForm({ onSearch }: JobFormProps) {
 
   const handleOnFilter = ({ filter, valueFilter }: FilterChange): void => {
     const filters: Filters = {
-      [filter]: valueFilter
+      [filter]: valueFilter,
     };
 
     onSearch(filters);
   };
 
-  const handleOnSearchInput = (value: string) => {
-    const filters: Filters = {
-      search: value
-    };
+  const handleOnCleanFilters = (): void => {
+    const filterTechnology = document.getElementById(
+      idTechnology,
+    ) as HTMLSelectElement;
+    const filterUbication = document.getElementById(
+      idUbication,
+    ) as HTMLSelectElement;
+    const filterExperience = document.getElementById(
+      idExperience,
+    ) as HTMLSelectElement;
 
-    onSearch(filters);
-  }
+    filterTechnology.value = "";
+    filterUbication.value = "";
+    filterExperience.value = "";
+
+    onSearch({ technology: null, modalidad: null, nivel: null });
+  };
 
   return (
     <section className="jobs-search">
@@ -65,7 +93,7 @@ export function JobForm({ onSearch }: JobFormProps) {
       <p>Explora miles de oportunidades en el sector tecnológico.</p>
 
       <form role="search" id="filterForm" onSubmit={handleSubmit}>
-        <JobSearch name={idText} id={idText} onSearch={handleOnSearchInput}/>
+        <JobSearch name={idText} id={idText} />
 
         <div className="search-filters">
           {filterElements.map(({ id, filterName, options }) => (
@@ -77,6 +105,11 @@ export function JobForm({ onSearch }: JobFormProps) {
               onFilter={handleOnFilter}
             />
           ))}
+          {isFiltered && (
+            <button type="button" onClick={handleOnCleanFilters}>
+              Limpiar filtros
+            </button>
+          )}
         </div>
       </form>
     </section>

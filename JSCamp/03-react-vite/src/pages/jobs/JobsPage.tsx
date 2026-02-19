@@ -1,5 +1,3 @@
-// React
-import { useEffect, useState } from "react";
 // Components
 import { JobCard } from "./components/JobCard";
 import { JobForm } from "./components/JobForm";
@@ -8,34 +6,18 @@ import { RESULTS_PER_PAGE } from "./constants/jobs-page";
 // Interfaces
 import type { Filters } from "./interfaces";
 import { useSearchForm } from "./hooks/useSearchForm";
-import { ApiJobResponse, Job } from "./interfaces/api-job-reponse";
 import { LoadingDialog } from "@/shared/components/LoadingDialog";
 
 export function JobsPage() {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [jobs, setJobs] = useState<Job[]>([]);
-  const [total, setTotal] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    async function fetchJobs() {
-      try {
-        setLoading(true);
-        const response = await fetch("https://jscamp-api.vercel.app/api/jobs");
-        const data = (await response.json()) as ApiJobResponse;
-        setJobs(data.data);
-        setTotal(data.total);
-      } catch (error) {
-        console.error("Error fetching jobs:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchJobs();
-  }, []);
-
-  const { handleOnSearch } = useSearchForm();
+  const {
+    handleOnSearch,
+    setCurrentPage,
+    currentPage,
+    jobs,
+    total,
+    loading,
+    filtersState,
+  } = useSearchForm();
 
   function handlePageChange(page: number): void {
     setCurrentPage(page);
@@ -50,7 +32,7 @@ export function JobsPage() {
 
   return (
     <main>
-      <JobForm onSearch={handleOnSubmitSearch} />
+      <JobForm filtersState={filtersState} onSearch={handleOnSubmitSearch} />
 
       <h2 style={{ textAlign: "center" }}>Resultados de búsqueda</h2>
       <div className="jobs-listings">
@@ -60,6 +42,8 @@ export function JobsPage() {
             title="Cargando"
             message="Cargando trabajos disponibles..."
           />
+        ) : jobs.length === 0 ? (
+          <p>No se encontraron resultados</p>
         ) : (
           jobs.map((job) => (
             <JobCard
