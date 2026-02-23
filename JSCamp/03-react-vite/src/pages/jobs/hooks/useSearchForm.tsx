@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import type { Filters, Job } from "../interfaces";
 import { ApiJobResponse } from "../interfaces/api-job-reponse";
 import { RESULTS_PER_PAGE } from "../constants/jobs-page";
-
-let timeoutId: NodeJS.Timeout | null = null;
 
 export function useSearchForm() {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -11,6 +9,8 @@ export function useSearchForm() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [total, setTotal] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
+
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   function handleOnSearch(filters: Filters): void {
     const newFilters = { ...filtersState, ...filters };
@@ -21,11 +21,11 @@ export function useSearchForm() {
   }
 
   function handleTextChange(text: string): void {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
     }
 
-    timeoutId = setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       window.localStorage.setItem(
         "filters",
         JSON.stringify({ ...filtersState, search: text }),
