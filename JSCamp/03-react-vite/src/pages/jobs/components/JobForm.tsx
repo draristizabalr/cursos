@@ -9,6 +9,7 @@ import type { Filters, FilterChange, FilterOption } from "../interfaces";
 interface JobFormProps {
   filtersState: Filters;
   onSearch: (filters: Filters) => void;
+  onTextChange: (text: string) => void;
 }
 
 interface FilterElement {
@@ -17,7 +18,11 @@ interface FilterElement {
   options: FilterOption[];
 }
 
-export function JobForm({ filtersState, onSearch }: JobFormProps) {
+export function JobForm({
+  filtersState,
+  onSearch,
+  onTextChange,
+}: JobFormProps) {
   const idText = useId();
   const idTechnology = useId();
   const idExperience = useId();
@@ -93,7 +98,7 @@ export function JobForm({ filtersState, onSearch }: JobFormProps) {
       <p>Explora miles de oportunidades en el sector tecnológico.</p>
 
       <form role="search" id="filterForm" onSubmit={handleSubmit}>
-        <JobSearch name={idText} id={idText} />
+        <JobSearch name={idText} id={idText} onTextChange={onTextChange} />
 
         <div className="search-filters">
           {filterElements.map(({ id, filterName, options }) => (

@@ -3,6 +3,8 @@ import type { Filters, Job } from "../interfaces";
 import { ApiJobResponse } from "../interfaces/api-job-reponse";
 import { RESULTS_PER_PAGE } from "../constants/jobs-page";
 
+let timeoutId: NodeJS.Timeout | null = null;
+
 export function useSearchForm() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [filtersState, setFiltersState] = useState<Filters>({});
@@ -16,6 +18,20 @@ export function useSearchForm() {
     window.localStorage.setItem("filters", JSON.stringify(newFilters));
 
     setFiltersState(newFilters);
+  }
+
+  function handleTextChange(text: string): void {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+
+    timeoutId = setTimeout(() => {
+      window.localStorage.setItem(
+        "filters",
+        JSON.stringify({ ...filtersState, search: text }),
+      );
+      setFiltersState((prevFilters) => ({ ...prevFilters, search: text }));
+    }, 500);
   }
 
   useEffect(() => {
@@ -55,6 +71,7 @@ export function useSearchForm() {
 
   return {
     handleOnSearch,
+    handleTextChange,
     setCurrentPage,
     currentPage,
     filtersState,

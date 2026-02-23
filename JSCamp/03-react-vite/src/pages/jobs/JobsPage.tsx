@@ -11,6 +11,7 @@ import { LoadingDialog } from "@/shared/components/LoadingDialog";
 export function JobsPage() {
   const {
     handleOnSearch,
+    handleTextChange,
     setCurrentPage,
     currentPage,
     jobs,
@@ -32,7 +33,11 @@ export function JobsPage() {
 
   return (
     <main>
-      <JobForm filtersState={filtersState} onSearch={handleOnSubmitSearch} />
+      <JobForm
+        filtersState={filtersState}
+        onSearch={handleOnSubmitSearch}
+        onTextChange={handleTextChange}
+      />
 
       <h2 style={{ textAlign: "center" }}>Resultados de búsqueda</h2>
       <div className="jobs-listings">
