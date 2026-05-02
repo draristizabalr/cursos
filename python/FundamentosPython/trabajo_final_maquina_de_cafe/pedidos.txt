@@ -1,0 +1,7 @@
+{'fecha': '2026-04-23T13:40:09.768313', 'pedido': 'Espresso'}
+{'fecha': '2026-04-23T13:40:23.021205', 'pedido': 'Americano'}
+{'fecha': '2026-04-23T13:55:51.556507', 'pedido': 'Cappuccino'}
+{'fecha': '2026-04-23T13:55:56.656416', 'pedido': 'Latte'}
+{'fecha': '2026-04-23T13:57:25.099141', 'pedido': 'Espresso'}
+{'fecha': '2026-04-23T13:58:04.003447', 'pedido': 'Cappuccino'}
+{'fecha': '2026-04-23T13:58:29.759492', 'pedido': 'Latte'}

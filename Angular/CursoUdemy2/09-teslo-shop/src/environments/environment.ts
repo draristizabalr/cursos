@@ -1,4 +1,4 @@
 export const environment = {
-  url: 'http://localhost:3000/api',
+  url: 'https://nest-teslo-shop-mj5p.onrender.com/api',
   imagePlaceholder: './assets/images/placeholder-image.jpg'
 };

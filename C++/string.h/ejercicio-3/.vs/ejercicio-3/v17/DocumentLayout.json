@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\cursos\\C\u002B\u002B\\string.h\\ejercicio-3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0F6700D9-5A21-4767-A5B6-EB70DCCDF8F9}|ejercicio-3.vcxproj|C:\\cursos\\C\u002B\u002B\\string.h\\ejercicio-3\\ejercicio-3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0F6700D9-5A21-4767-A5B6-EB70DCCDF8F9}|ejercicio-3.vcxproj|solutionrelative:ejercicio-3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ejercicio-3.cpp",
+              "DocumentMoniker": "C:\\cursos\\C\u002B\u002B\\string.h\\ejercicio-3\\ejercicio-3.cpp",
+              "RelativeDocumentMoniker": "ejercicio-3.cpp",
+              "ToolTip": "C:\\cursos\\C\u002B\u002B\\string.h\\ejercicio-3\\ejercicio-3.cpp",
+              "RelativeToolTip": "ejercicio-3.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-04T22:14:53.534Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

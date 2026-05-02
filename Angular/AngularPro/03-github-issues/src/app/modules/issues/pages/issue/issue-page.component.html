@@ -1,0 +1,20 @@
+<h1>
+  Issue number: <small>{{ issueId() }}</small>
+</h1>
+<a [routerLink]="['/']">Regresar</a>
+
+@if (issueQuery.data() === undefined) {
+  <p>Cargando issue</p>
+} @else {
+  <issue-comment [issue]="issueQuery.data()!"></issue-comment>
+}
+<!-- Comments -->
+@if (!issueCommentsQuery.isLoading() && issueCommentsQuery.data()) {
+  @for (issue of issueCommentsQuery.data()!; track issue.id) {
+    <issue-comment [issue]="issue" isComment></issue-comment>
+  } @empty {
+    <div class="w-full border border-dashed border-slate-100/40 rounded-md py-8 mt-4 bg-slate-400/10">
+      <h3 class="text-white text-center">No comments</h3>
+    </div>
+  }
+}

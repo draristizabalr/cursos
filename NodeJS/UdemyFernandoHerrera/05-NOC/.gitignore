@@ -1,0 +1,19 @@
+# node_modules
+node_modules
+package-lock.json
+
+# Logs
+logs
+
+# Dot Environments
+.env
+
+# Mongo DB
+mongo/
+postgres/
+/src/generated/prisma
+mongo-test/
+postgres-test/
+
+# test
+coverage/

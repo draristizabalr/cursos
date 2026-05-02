@@ -1,4 +1,11 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { Product } from '@products/interfaces/product.interface';
 import { ProductCarouselComponent } from '@products/components/product-carousel/product-carousel.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -25,6 +32,7 @@ export class ProductDetailsComponent implements OnInit {
   router = inject(Router);
 
   wasSaved = signal(false);
+  tempImages = signal<string[]>([]);
   productForm = this.fb.group({
     title: ['', [Validators.required]],
     description: ['', [Validators.required]],
@@ -43,7 +51,16 @@ export class ProductDetailsComponent implements OnInit {
     ],
   });
 
+  carouselImages = computed(() => {
+    const carouselImages = [...this.product().images, ...this.tempImages()];
+
+    console.log('carouselImages', carouselImages);
+
+    return carouselImages;
+  });
+
   sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+  imageFileList: FileList | undefined = undefined;
 
   ngOnInit(): void {
     // this.productForm.reset(this.product() as any);
@@ -70,13 +87,17 @@ export class ProductDetailsComponent implements OnInit {
     };
     if (this.product().id === 'new') {
       const product = await firstValueFrom(
-        this.productService.createProduct(productLike),
+        this.productService.createProduct(productLike, this.imageFileList),
       );
 
       this.router.navigate(['/admin/product', product.id]);
     } else {
-      const product = await firstValueFrom(
-        this.productService.updateProduct(this.product().id, productLike),
+      await firstValueFrom(
+        this.productService.updateProduct(
+          this.product().id,
+          productLike,
+          this.imageFileList,
+        ),
       );
     }
 
@@ -97,5 +118,17 @@ export class ProductDetailsComponent implements OnInit {
     }
 
     this.productForm.patchValue({ sizes: currentSizes });
+  }
+
+  onFilesChange(event: Event) {
+    const files = (event.target as HTMLInputElement).files;
+    this.imageFileList = files ?? undefined;
+    this.tempImages.set([]);
+
+    const imageUrl = Array.from(files ?? []).map((file) =>
+      URL.createObjectURL(file),
+    );
+
+    this.tempImages.set(imageUrl);
   }
 }

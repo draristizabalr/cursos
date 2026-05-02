@@ -1,0 +1,136 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "dra-side-menu": {
+      "projectType": "library",
+      "root": "projects/dra-side-menu",
+      "sourceRoot": "projects/dra-side-menu/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dra-side-menu/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dra-side-menu/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/dra-side-menu/tsconfig.spec.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/dra-side-menu/**/*.ts",
+              "projects/dra-side-menu/**/*.html"
+            ],
+            "eslintConfig": "projects/dra-side-menu/eslint.config.js"
+          }
+        }
+      }
+    },
+    "dra-testbed-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/dra-testbed-app",
+      "sourceRoot": "projects/dra-testbed-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/dra-testbed-app/src/main.ts",
+            "tsConfig": "projects/dra-testbed-app/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/dra-testbed-app/public"
+              }
+            ],
+            "styles": [
+              "projects/dra-testbed-app/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dra-testbed-app:build:production"
+            },
+            "development": {
+              "buildTarget": "dra-testbed-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/dra-testbed-app/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/dra-testbed-app/public"
+              }
+            ],
+            "styles": [
+              "projects/dra-testbed-app/src/styles.css"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/dra-testbed-app/**/*.ts",
+              "projects/dra-testbed-app/**/*.html"
+            ],
+            "eslintConfig": "projects/dra-testbed-app/eslint.config.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "schematicCollections": [
+      "angular-eslint"
+    ]
+  }
+}

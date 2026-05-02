@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\cursos\\C\u002B\u002B\\matrices-arreglos-bidimensionales\\ejercicio-empresa-ventas\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BD3B6B79-9275-45B0-8DA1-4359564D3B3D}|ejercicio-empresa-ventas.vcxproj|C:\\cursos\\C\u002B\u002B\\matrices-arreglos-bidimensionales\\ejercicio-empresa-ventas\\ejercicio-empresa-ventas.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BD3B6B79-9275-45B0-8DA1-4359564D3B3D}|ejercicio-empresa-ventas.vcxproj|solutionrelative:ejercicio-empresa-ventas.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ejercicio-empresa-ventas.cpp",
+              "DocumentMoniker": "C:\\cursos\\C\u002B\u002B\\matrices-arreglos-bidimensionales\\ejercicio-empresa-ventas\\ejercicio-empresa-ventas.cpp",
+              "RelativeDocumentMoniker": "ejercicio-empresa-ventas.cpp",
+              "ToolTip": "C:\\cursos\\C\u002B\u002B\\matrices-arreglos-bidimensionales\\ejercicio-empresa-ventas\\ejercicio-empresa-ventas.cpp",
+              "RelativeToolTip": "ejercicio-empresa-ventas.cpp",
+              "ViewState": "AgIAAPMAAAAAAAAAAAAAAAgBAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-08T15:13:16.732Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

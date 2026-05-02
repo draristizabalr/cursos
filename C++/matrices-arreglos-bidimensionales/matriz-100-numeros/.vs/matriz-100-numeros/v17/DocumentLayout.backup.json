@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\cursos\\C\u002B\u002B\\matrices-arreglos-bidimensionales\\matriz-100-numeros\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{50AF272B-F490-47D3-A156-60B37F8CA8EC}|matriz-100-numeros.vcxproj|C:\\cursos\\C\u002B\u002B\\matrices-arreglos-bidimensionales\\matriz-100-numeros\\matriz-100-numeros.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{50AF272B-F490-47D3-A156-60B37F8CA8EC}|matriz-100-numeros.vcxproj|solutionrelative:matriz-100-numeros.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "matriz-100-numeros.cpp",
+              "DocumentMoniker": "C:\\cursos\\C\u002B\u002B\\matrices-arreglos-bidimensionales\\matriz-100-numeros\\matriz-100-numeros.cpp",
+              "RelativeDocumentMoniker": "matriz-100-numeros.cpp",
+              "ToolTip": "C:\\cursos\\C\u002B\u002B\\matrices-arreglos-bidimensionales\\matriz-100-numeros\\matriz-100-numeros.cpp",
+              "RelativeToolTip": "matriz-100-numeros.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-04T22:56:59.248Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

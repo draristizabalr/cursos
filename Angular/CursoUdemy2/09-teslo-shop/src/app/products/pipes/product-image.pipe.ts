@@ -17,6 +17,10 @@ export class ProductImagePipe implements PipeTransform {
       return url + value[0];
     }
 
+    if (value.startsWith('blob:http://')) {
+      return value;
+    }
+
     return url + value;
   }
 
