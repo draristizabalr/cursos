@@ -1,14 +1,22 @@
-from sqlmodel import SQLModel, Field, Relationship
+from enum import Enum
 from typing import TYPE_CHECKING
+
+from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
     from app.models.customer import Customer
+
+
+class StatusEnum(str, Enum):
+    ACTIVE = "active"
+    INACTIVE = "inactive"
 
 
 class CustomerPlan(SQLModel, table=True):
     id: int = Field(default=None, primary_key=True, nullable=False)
     plan_id: int = Field(default=1, foreign_key="plan.id", nullable=False)
     customer_id: int = Field(foreign_key="customer.id", nullable=False)
+    status: StatusEnum = Field(default=StatusEnum.ACTIVE)
 
 
 class PlanBase(SQLModel):
@@ -24,7 +32,7 @@ class CreatePlan(PlanBase):
 class Plan(PlanBase, table=True):
     id: int = Field(default=None, primary_key=True)
     customers: list[Customer] = Relationship(
-        back_populates="plans", link_model=CustomerPlan
+        back_populates="plan", link_model=CustomerPlan
     )
 
 

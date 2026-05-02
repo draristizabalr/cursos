@@ -1,7 +1,10 @@
-from ..constants.time_zone import TIME_ZONE
-from http import HTTPStatus
-from fastapi import HTTPException
 import zoneinfo
+from http import HTTPStatus
+
+from fastapi import HTTPException
+
+from ..constants.time_zone import TIME_ZONE
+
 
 def get_zone_info(iso_code: str):
     iso = iso_code.upper()
