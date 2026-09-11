@@ -1,0 +1,23 @@
+[project]
+name = "unittestingpython"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "draristizabalr", email = "dariarra@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "coverage>=7.16.0",
+    "faker>=40.38.0",
+    "ipdb>=0.13.13",
+    "pytest>=9.1.1",
+    "requests>=2.34.2",
+]
+
+[project.scripts]
+unittestingpython = "unittestingpython:main"
+
+[build-system]
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
