@@ -1,0 +1,19 @@
+{
+	"name": "apillm",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"typecheck": "bun check"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^7"
+	},
+	"dependencies": {
+		"biome": "^0.3.3",
+		"openai": "^7.39.0"
+	}
+}
